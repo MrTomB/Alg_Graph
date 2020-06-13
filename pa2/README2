@@ -1,0 +1,197 @@
+/* 	Thomas Burch
+	4/15/15
+	CMPS 101 - Spring2015
+	Allen Van Gelder
+	Pa2 - Programming Assignemnt
+
+----Program Function----
+	The program will read all lines from a properly formatted
+	input text (ascii) file, or stdin using C's Library Function
+	and prints out number of possible node/vertices, the actual vertices number,
+	and then list the adjvertices in a list. It will also print the transpose of the orginal input.
+	Then tranpose it two more times.
+
+----How to run----
+Make sure these files are present.
+* Makefile
+* graph02.c
+* IntList.h
+* IntList.c
+* gr02_test0.in
+/ or other properly formated input files
+* gr02_test1.in
+* gr02_test2.in
+* gr02_test3.in
+
+----Test Input/Output----
+n = Number of vertices/nodes in the graph
+m = Number of edges in the graph
+The LEFT COLUMN specifies the node/vertex and the
+RIGHT COLUMN lists what other nodes/vertices are
+connected to it.
+
+---gr02_test0.in Output----
+$ make graph02
+$ graph01 gr02_test0.in
+Opened gr02_test0.in for input.
+n = 8
+m = 6
+This is the Orginal Graph.
+1	 [2]
+2	 [3]
+3	 [4]
+4	 [5]
+5	 [2]
+6	 [1]
+7	 null
+8	 null
+Vertex [5] MIGHT BE in cycle.
+This is the first transposeGraph.
+1	 [6]
+2	 [5, 1]
+3	 [2]
+4	 [3]
+5	 [4]
+6	 null
+7	 null
+8	 null
+Vertex [2] MIGHT BE in cycle.
+This is the transpose of the transposeGraph.
+1	 [2]
+2	 [3]
+3	 [4]
+4	 [5]
+5	 [2]
+6	 [1]
+7	 null
+8	 null
+Vertex [5] MIGHT BE in cycle.
+This is the third transposeGraph.
+1	 [6]
+2	 [5, 1]
+3	 [2]
+4	 [3]
+5	 [4]
+6	 null
+7	 null
+8	 null
+Vertex [2] MIGHT BE in cycle.
+
+---gr02_test1.in Output----
+$ make graph02
+$ graph01 gr02_test1.in
+Opened gr02_test1.in for input.
+n = 10
+m = 7
+This is the Orginal Graph.
+1	 [5, 2]
+2	 [1]
+3	 [4]
+4	 null
+5	 [6]
+6	 null
+7	 [9, 8]
+8	 null
+9	 null
+10	 null
+Vertex [6] MIGHT BE in cycle.
+This is the first transposeGraph.
+1	 [2]
+2	 [1]
+3	 null
+4	 [3]
+5	 [1]
+6	 [5]
+7	 null
+8	 [7]
+9	 [7]
+10	 null
+Vertex [1] MIGHT BE in cycle.
+This is the transpose of the transposeGraph.
+1	 [5, 2]
+2	 [1]
+3	 [4]
+4	 null
+5	 [6]
+6	 null
+7	 [9, 8]
+8	 null
+9	 null
+10	 null
+Vertex [6] MIGHT BE in cycle.
+This is the third transposeGraph.
+1	 [2]
+2	 [1]
+3	 null
+4	 [3]
+5	 [1]
+6	 [5]
+7	 null
+8	 [7]
+9	 [7]
+10	 null
+Vertex [1] MIGHT BE in cycle.
+
+---gr02_test2.in Output----
+$ make graph02
+$ graph02 gr02_test2.in
+Opened gr02_test2.in for input.
+n = 4
+m = 4
+This is the Orginal Graph.
+1	 [2]
+2	 [3]
+3	 [4]
+4	 [1]
+Vertex [1] MIGHT BE in cycle.
+This is the first transposeGraph.
+1	 [4]
+2	 [1]
+3	 [2]
+4	 [3]
+Vertex [1] MIGHT BE in cycle.
+This is the transpose of the transposeGraph.
+1	 [2]
+2	 [3]
+3	 [4]
+4	 [1]
+Vertex [1] MIGHT BE in cycle.
+This is the third transposeGraph.
+1	 [4]
+2	 [1]
+3	 [2]
+4	 [3]
+Vertex [1] MIGHT BE in cycle.
+
+---gr02_test3.in Output----
+
+$ graph02 gr02_test3.in
+Opened gr02_test3.in for input.
+n = 4
+m = 3
+This is the Orginal Graph.
+1	 [2]
+2	 [3]
+3	 [4]
+4	 null
+NO cycle.
+This is the first transposeGraph.
+1	 null
+2	 [1]
+3	 [2]
+4	 [3]
+NO cycle.
+This is the transpose of the transposeGraph.
+1	 [2]
+2	 [3]
+3	 [4]
+4	 null
+NO cycle.
+This is the third transposeGraph.
+1	 null
+2	 [1]
+3	 [2]
+4	 [3]
+NO cycle.
+
+*/

@@ -1,0 +1,117 @@
+/* Thomas Burch
+	5/27/15
+	CMPS 101 - Spring2015
+	Allen Van Gelder
+	Pa4 - Programming Assignemnt
+
+----Program Function----
+	The program will read all lines from a properly formatted
+	input text (ascii) file, or stdin using C's Library Function
+	and prints out number of possible node/vertices, the actual vertices number,
+	and then list the adjvertices in a list. Then Depth First Search will be performed and the discoverytime, finishtime, parent nodes of each vertex, and the finishing stack in order of finishing time will be printed. Then the transpose of the orginal input will be printed. Then Depth First Search will be performed and the discoerytime, finishtime, parents of each vertex, and the finishing stack will be displayed. But also the leaders of the strongly connected components will be printed as well.
+	
+
+----How to run----
+Make sure these files are present.
+* Makefile
+* graph04.c
+* edgeList.h
+* edgeList.c
+* loadWgtGraph.h
+* loadWgtGraph.c
+* minPQ.h
+* minPQ.c
+
+----Test Input/Output----
+n = Number of vertices/nodes in the graph
+m = Number of edges in the graph
+s = starting vertex
+status = intree, fringe, unseen
+parent = previous node
+fringeWgt = wgt given to adjInfo
+priority = calculate dijkstras distance or prim's weight distance
+
+----testinput1.in----
+$ make graph04
+$ graph04 1 -P testinput.in
+Prim MST starting at vertex 1
+s = 1
+n = 10
+m = 13
+Vertex	status	priority	parent
+   1      t     0.000000       -1
+   2      t     1.000000        1
+   3      t     2.000000        2
+   4      t     2.000000        3
+   5      t     2.000000        2
+   6      t     1.000000       10
+   7      t     1.000000        2
+   8      t     1.000000        4
+   9      t     1.000000        5
+  10      t     1.000000        9
+
+$ make graph04
+$ graph04 -D 1 testinput.in
+Dijkstra SSSP starting at vertex 1
+s = 1
+n = 10
+m = 13
+Vertex	status	priority	parent
+   1      t     0.000000       -1
+   2      t     1.000000        1
+   3      t     3.000000        2
+   4      u     0.000000        0
+   5      t     3.000000        2
+   6      t     4.000000        2
+   7      t     2.000000        2
+   8      u     0.000000        0
+   9      t     4.000000        5
+  10      t     5.000000        9
+
+----testinput1.in----
+$ make graph04
+Prim MST starting at vertex 1
+s = 1
+n = 3
+m = 4
+Vertex	status	priority	parent
+   1      t     0.000000       -1
+   2      t     1.000000        3
+   3      t     2.500000        1
+
+$ make graph04
+$ graph04 -D 1 testinput1.in
+Dijkstra SSSP starting at vertex 1
+s = 1
+n = 3
+m = 4
+Vertex	status	priority	parent
+   1      t     0.000000       -1
+   2      t     3.500000        3
+   3      t     2.500000        1
+
+----testinput2.in----
+$ make graph04
+$ graph04 1 -P testinput2.in
+Prim MST starting at vertex 1
+s = 1
+n = 4
+m = 4
+Vertex	status	priority	parent
+   1      t     0.000000       -1
+   2      t     4.000000        1
+   3      t     5.000000        2
+   4      t     2.000000        1
+
+$ make graph04
+$ graph04 1 -D testinput2.in
+Dijkstra SSSP starting at vertex 1
+s = 1
+n = 4
+m = 4
+Vertex	status	priority	parent
+   1      t     0.000000       -1
+   2      t     4.000000        1
+   3      t     9.000000        2
+   4      t    16.000000        3
+

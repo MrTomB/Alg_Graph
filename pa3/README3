@@ -1,0 +1,159 @@
+/* Thomas Burch
+	5/27/15
+	CMPS 101 - Spring2015
+	Allen Van Gelder
+	Pa3 - Programming Assignemnt
+
+----Program Function----
+	The program will read all lines from a properly formatted
+	input text (ascii) file, or stdin using C's Library Function
+	and prints out number of possible node/vertices, the actual vertices number,
+	and then list the adjvertices in a list. Then Depth First Search will be performed and the discoverytime, finishtime, parent nodes of each vertex, and the finishing stack in order of finishing time will be printed. Then the transpose of the orginal input will be printed. Then Depth First Search will be performed and the discoerytime, finishtime, parents of each vertex, and the finishing stack will be displayed. But also the leaders of the strongly connected components will be printed as well.
+	
+
+----How to run----
+Make sure these files are present.
+* Makefile
+* scc03.c
+* IntList.h
+* IntList.c
+* dfsTrace1.h
+* dfsTrace1.c
+* dfsPhase2.h
+* dfsPhase2.c
+* testinput.in
+* testinput1.in
+* testinput2.in
+
+----Test Input/Output----
+n = Number of vertices/nodes in the graph
+m = Number of edges in the graph
+
+For the Original Graph and the Transpose Graph:
+The LEFT COLUMN specifies the node/vertex and the
+RIGHT COLUMN lists what other nodes/vertices are
+connected to it.
+
+For the Original Graph:
+Vertex will print the number of the vertex.
+discoverTime1 will print the order the vertex is discovered (turning white).
+finishTime1 will print the order the vertex is placed on the stack (turning black).
+parent1 will print the parent vertex of each vertex (-1 being origin of dfs).
+finishStk1 will print the stack starting from 1 to n, based on when the vertex is placed on the stack (turning black).
+
+For the Transpose Graph:
+discoverTime2 will print the order the vertex is discovered (turning white).
+finishTime2 will print the order the vertex is placed on the stack (turning black).
+parent2 will print the parent vertex of each vertex (-1 being origin of dfs).
+finishStk2 will print the stack starting from 1 to n, based on when the vertex is placed on the stack (turning black).
+dftRoot2 will print the leaders of the strongly connected components.
+
+----testinput.in Output----
+$ make scc03
+$ scc03 testinput.in
+Opened testinput.in for input.
+n = 6
+m = 9
+This is the Original Graph.
+1   [2, 3, 4]
+2   [3]
+3   [3]
+4   [3]
+5   [6, 4]
+6   [5]
+Vertex [3] MIGHT BE in cycle.
+Vertex   dtime ftime parent   
+   1        1        8       -1
+   2        2        5        1
+   3        3        4        2
+   4        6        7        1
+   5        9       12       -1
+   6       10       11        5
+finishStk1: 5 6 1 4 2 3 
+
+This is the Transposed Graph.
+1   null
+2   [1]
+3   [4, 3, 2, 1]
+4   [5, 1]
+5   [6]
+6   [5]
+Vertex [5] MIGHT BE in cycle.
+Vertex   dtime2   ftime2   parent2
+   1        5        6       -1
+   2        9       10       -1
+   3       11       12       -1
+   4        7        8       -1
+   5        1        4       -1
+   6        2        3        5
+dfstRoot2: 5 1 4 2 3 
+
+----testinput1.in Output----
+$ make scc03
+$ scc03 testinput1.in
+Opened testinput1.in for input.
+n = 5
+m = 5
+This is the Original Graph.
+1   [2]
+2   [5, 3]
+3   [4]
+4   [5]
+5   null
+NO cycle.
+Vertex   dtime ftime parent   
+   1        1       10       -1
+   2        2        9        1
+   3        5        8        2
+   4        6        7        3
+   5        3        4        2
+finishStk1: 1 2 3 4 5 
+
+This is the Transposed Graph.
+1   null
+2   [1]
+3   [2]
+4   [3]
+5   [4, 2]
+NO cycle.
+Vertex   dtime2   ftime2   parent2
+   1        1        2       -1
+   2        3        4       -1
+   3        5        6       -1
+   4        7        8       -1
+   5        9       10       -1
+dfstRoot2: 1 2 3 4 5 
+
+----testinput2.in Output----
+$ make scc03
+$ scc03 testinput2.in
+Opened testinput2.in for input.
+n = 4
+m = 5
+This is the Original Graph.
+1   [2]
+2   [3]
+3   [4]
+4   [2, 1]
+Vertex [2] MIGHT BE in cycle.
+Vertex   dtime ftime parent   
+   1        1        8       -1
+   2        2        7        1
+   3        3        6        2
+   4        4        5        3
+finishStk1: 1 2 3 4 
+
+This is the Transposed Graph.
+1   [4]
+2   [4, 1]
+3   [2]
+4   [3]
+Vertex [4] MIGHT BE in cycle.
+Vertex   dtime2   ftime2   parent2
+   1        1        8       -1
+   2        4        5        3
+   3        3        6        4
+   4        2        7        1
+dfstRoot2: 1 
+
+*/

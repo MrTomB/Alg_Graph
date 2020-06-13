@@ -1,0 +1,79 @@
+/* 	Thomas Burch
+	4/15/15
+	CMPS 101 - Spring2015
+	Allen Van Gelder
+	Pa1 - Programming Assignemnt
+
+----Program Function----
+	The program will read all lines from a properly formatted
+	input text (ascii) file, or stdin using C's Library Function
+	and prints out number of possible node/vertices, the actual vertices number,
+	and then list the adjvertices in a list.
+
+----How to run----
+Make sure these files are present.
+* Makefile
+* graph01.c
+* IntList.h
+* IntList.c
+* gr02_test0.in
+/ or other properly formated input files
+* gr03_test1.in
+* test1.in
+* test2.in
+* test3.in
+
+----Test Input/Output----
+n = Number of vertices/nodes in the graph
+m = Number of edges in the graph
+The LEFT COLUMN specifies the node/vertex and the
+RIGHT COLUMN lists what other nodes/vertices are
+connected to it.
+
+---gr02_test0.in Output----
+$ make graph01
+$ graph01 gr02_test0.in
+Opened gr02_test0.in for input.
+n = 8
+m = 6
+1	 [2]
+2	 [3]
+3	 [4]
+4	 [5]
+5	 [2]
+6	 [1]
+7	 null
+8	 null
+
+---gr03_test1.in Output----
+$ make graph01
+$ graph01 gr03_test1.in
+Opened gr03_test1.in for input.
+n = 10
+m = 8
+1	 [2, 9]
+2	 [4]
+3	 [5]
+4	 [7]
+5	 null
+6	 [1]
+7	 [3]
+8	 [1]
+9	 null
+10	 null
+
+---test01.in Output------
+Opened test01.in for input.
+Bad Line
+
+---test02.in Output-----
+Opened test02.in for input.
+n = 8
+Bad edge
+
+---test03.in Output------
+Opened test02.in for input.
+n = 8
+Bad edge
+
+*/
